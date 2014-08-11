@@ -35,4 +35,12 @@ $(document).ready(function() {
 			$(this).unbind('click');
 		});
 	}
+
+	$(".guess_box").hover(
+		function() {
+			$(this).addClass("my_hover");
+		},
+		function() {
+			$(this).removeClass("my_hover");
+		});
 });
