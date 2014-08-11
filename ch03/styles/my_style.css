@@ -19,6 +19,10 @@ div{
 	height: 500px;
 }
 
-.my_hover{
-	border: solid #00f 3px;
+.dicount{
+	border: solid #0f0 3px;
+}
+
+.no_discount{
+	border: solid #f00 3px;
 }
