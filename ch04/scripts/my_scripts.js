@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-	var click_status = status;
+	var click_status = false;
+	var $f, $m;
 
 	$("button#vegOn").click(function() {
 
