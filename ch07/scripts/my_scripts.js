@@ -28,6 +28,41 @@ $(document).ready(function() {
 		window.clearInterval(int3);
 	}
 
+	var m = 10;
+	var w = 367;
+
+	$("btnRandom").click(randomize);
+	$("btnReset").click(reset);
+
+	function getRandom(num) {
+
+		var my_num = Math.floor(Math.random() * num);
+		return my_num;
+	}
+
+	function randomize() {
+
+		$(".face").each(function(index) {
+			var target_position = getRandom(m);
+			var current_position = clix[index];
+			clix[index] = target_position;
+			var move_to = target_position * w;
+			$(this).animate({
+				left: "-=" + move_to + "px"
+			}, 500);
+		});
+	}
+
+	function reset() {
+
+		$(".face").each(function(index) {
+			clix[index] = 0;
+			$(this).animate({
+				left: "0px"
+			}, 500);
+		});
+	}
+
 	var clix = [0, 0, 0, 0];
 
 	$("#head").click(function() {
