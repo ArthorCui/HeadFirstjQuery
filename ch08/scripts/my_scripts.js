@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+    var FREQ = 10000;
+
+    function startAJAXcalls() {
+
+        setTimeout(function() {
+            getXmlRacers();
+            startAJAXcalls();
+        }, FREQ);
+    }
+
+    getXmlRacers();
+    startAJAXcalls();
+
+
     function getXmlRacers() {
 
         $.ajax({
@@ -15,12 +29,12 @@ $(document).ready(function() {
                 $(xml).find("runner").each(function() {
 
                     var info = '<li>Name: ' + $(this).find("fname").text() + ' ' + $(this).find("lname").text() + '. Time: ' + $(this).find("time").text() + '</li>';
-                    if ($(this).find("gender").text == "m") {
-                        $("#finishers_m").append(info);
-                    } else if ($(this).find("gender").text == "f") {
-                        $("#finishers_f").append(info);
+                    if ($(this).find("gender").text() == "m") {
+                        $('#finishers_m').append(info);
+                    } else if ($(this).find("gender").text() == "f") {
+                        $('#finishers_f').append(info);
                     } else {}
-                    $("#finishers_all").append(info);
+                    $('#finishers_all').append(info);
                 });
                 getTime();
             }
