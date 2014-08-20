@@ -31,8 +31,8 @@ $(document).ready(function() {
 	var m = 10;
 	var w = 367;
 
-	$("btnRandom").click(randomize);
-	$("btnReset").click(reset);
+	$("#btnRandom").click(randomize);
+	$("#btnReset").click(reset);
 
 	function getRandom(num) {
 
@@ -46,10 +46,18 @@ $(document).ready(function() {
 			var target_position = getRandom(m);
 			var current_position = clix[index];
 			clix[index] = target_position;
-			var move_to = target_position * w;
-			$(this).animate({
-				left: "-=" + move_to + "px"
-			}, 500);
+
+			if (target_position > current_position) {
+				var move_to = (target_position - current_position) * w;
+				$(this).animate({
+					left: "-=" + move_to + "px"
+				}, 500);
+			} else if (target_position < current_position) {
+				var move_to = (current_position - target_position) * w;
+				$(this).animate({
+					left: "+=" + move_to + "px"
+				}, 500);
+			} else {}
 		});
 	}
 
