@@ -5,9 +5,34 @@ $(document).ready(function() {
 		noseclix = 0,
 		mouthclix = 0;
 
-	lightning_one();
-	lightning_two();
-	lightning_three();
+	goLightning();
+	windows.onblur = stopLightning();
+	windows.onfocus = goLightning();
+
+	var int1, int2, int3;
+
+	function goLightning() {
+
+		int1 = setInterval(function() {
+			lightning_one();
+		}, 3000);
+
+		int2 = setInterval(function() {
+			lightning_two();
+		}, 5000);
+
+		int3 = setInterval(function() {
+			lightning_three();
+		}, 8000);
+	}
+
+	function stopLightning() {
+
+		windows.clearInterval(int1);
+		windows.clearInterval(int2);
+		windows.clearInterval(int3);
+	}
+
 
 	$("#head").click(function() {
 		if (headclix < 9) {
@@ -68,15 +93,12 @@ $(document).ready(function() {
 
 function lightning_one() {
 	$("#container #lightning1").fadeIn(250).fadeOut(250);
-	setTimeout("lightning_one()", 3000);
 };
 
 function lightning_two() {
 	$("#container #lightning2").fadeIn("fast").fadeOut("slow");
-	setTimeout("lightning_two()", 5000);
 };
 
 function lightning_three() {
 	$("#container #lightning3").fadeIn("slow").fadeOut("fast");
-	setTimeout("lightning_three()", 8000);
 };
